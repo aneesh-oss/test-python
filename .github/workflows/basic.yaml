@@ -20,11 +20,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
           
       # Install dependencies
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          if [[ ${{ matrix.python-version }} == 3.7 ]]; then pip install 'pip<20.2'; fi
-          pip install -r requirements.txt
+      # - name: Install dependencies
+      #   run: |
+      #     pip install --upgrade pip
+      #     if [[ ${{ matrix.python-version }} == 3.7 ]]; then pip install 'pip<20.2'; fi
+      #     pip install -r requirements.txt
           
       # Test code
       - name: Run tests
