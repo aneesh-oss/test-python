@@ -6,6 +6,6 @@ def factorial(n):
         return n * factorial(n- 1)
         
 def main():
-    num = int(input("Enter a nonnegative integer: "))
+    num = 7
     print("The factorial of",num,"is",factorial(num))
 main()
