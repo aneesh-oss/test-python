@@ -1,0 +1,31 @@
+name: basic-workflow
+
+on: 
+  workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7,3.8,3.9]
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      # Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          if [[ ${{ matrix.python-version }} == 3.7 ]]; then pip install 'pip<20.2'; fi
+          pip install -r requirements.txt
+          
+      # Test code
+      - name: Run tests
+        run: python first.py 
